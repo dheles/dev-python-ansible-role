@@ -1,2 +1,9 @@
 ---
-# defaults file for dev-python
+dev_python_versions:
+  - 3
+pip_packages:
+  - virtualenv
+  - python-language-server
+atom_packages:
+  - atom-ide-ui
+  - ide-python

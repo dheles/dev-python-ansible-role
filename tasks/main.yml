@@ -1,2 +1,24 @@
 ---
-# tasks file for dev-python
+- name: include os-specific vars
+  include_vars: "{{ansible_os_family}}.yml"
+
+- name: install os-specific packages
+  include: "{{ansible_os_family}}.yml"
+
+- name: install pip2 packages
+  pip:
+    name: "{{ item }}"
+    executable: pip2
+  with_items: "{{ pip_packages }}"
+  when: 2 in dev_python_versions
+
+- name: install pip3 packages
+  pip:
+    name: "{{ item }}"
+    executable: pip3
+  with_items: "{{ pip_packages }}"
+  when: 3 in dev_python_versions
+
+- name: install atom packages
+  command: "apm install {{ item }}"
+  with_items: "{{ atom_packages }}"
