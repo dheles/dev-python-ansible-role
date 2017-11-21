@@ -8,3 +8,4 @@ pip_packages:
 atom_packages:
   - atom-ide-ui
   - ide-python
+  - hydrogen
