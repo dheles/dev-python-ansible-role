@@ -36,3 +36,9 @@
 - name: install atom packages
   command: "apm install {{ item }}"
   with_items: "{{ atom_packages }}"
+
+# NOTE: fix for hydrogen and homebrew-installed python3
+# https://github.com/nteract/hydrogen/issues/730
+- name: update ipykernel for python3
+  command: "python3 -m ipykernel install --user"
+  when: 3 in dev_python_versions
